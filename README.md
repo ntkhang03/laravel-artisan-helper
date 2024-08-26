@@ -19,7 +19,7 @@ Laravel Artisan Helper for Visual Studio Code provides a seamless experience whe
 ### Make
 <img src="./assets/list-of-make-commands.png">
 
-### Migrate & Database
+### Migrate & Database and Misc
 <img src="./assets/list-of-migrate-database-and-misc.png">
 
 ## Installation
