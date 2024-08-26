@@ -27,4 +27,9 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.0.2] - 2024-08-26
+
+### Added
+- Add Command Palette.
+
 For more information, visit the [extension repository](https://github.com/your-username/laravel-support).

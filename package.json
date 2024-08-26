@@ -5,7 +5,7 @@
 	"description": "VSCode extension for Laravel with Artisan command support and migration tools.",
 	"author": "NTKhang",
 	"license": "MIT",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.89.0"
 	},
@@ -43,7 +43,219 @@
 					"name": "Commands"
 				}
 			]
-		}
+		},
+		"commands": [
+			{
+				"command": "laravelMakeCommands.runMakeController",
+				"title": "make:controller",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeModel",
+				"title": "make:model",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeMigration",
+				"title": "make:migration",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeSeeder",
+				"title": "make:seeder",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeFactory",
+				"title": "make:factory",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeMiddleware",
+				"title": "make:middleware",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeRequest",
+				"title": "make:request",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeEvent",
+				"title": "make:event",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeListener",
+				"title": "make:listener",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeCommand",
+				"title": "make:command",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeJob",
+				"title": "make:job",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakePolicy",
+				"title": "make:policy",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeProvider",
+				"title": "make:provider",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeTest",
+				"title": "make:test",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeMail",
+				"title": "make:mail",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeNotification",
+				"title": "make:notification",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeResource",
+				"title": "make:resource",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeRule",
+				"title": "make:rule",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeObserver",
+				"title": "make:observer",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeChannel",
+				"title": "make:channel",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeException",
+				"title": "make:exception",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeConsole",
+				"title": "make:console",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeScope",
+				"title": "make:scope",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeCast",
+				"title": "make:cast",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMakeCommands.runMakeComponent",
+				"title": "make:component",
+				"category": "Artisan Make"
+			},
+			{
+				"command": "laravelMigrateCommands.runMigrate",
+				"title": "migrate",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runMigrateRollback",
+				"title": "migrate:rollback",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runMigrateRefresh",
+				"title": "migrate:refresh",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runMigrateReset",
+				"title": "migrate:reset",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runMigrateStatus",
+				"title": "migrate:status",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runMigrateFresh",
+				"title": "migrate:fresh",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runMigrateInstall",
+				"title": "migrate:install",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runMakeMigration",
+				"title": "migrate:make",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runDbSeed",
+				"title": "db:seed",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runDbWipe",
+				"title": "db:wipe",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runDbShow",
+				"title": "db:show",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runDbTable",
+				"title": "db:table",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runDbPrune",
+				"title": "db:prune",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelMigrateCommands.runDbMonitor",
+				"title": "db:monitor",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravelCommands.runServe",
+				"title": "serve",
+				"category": "Artisan Misc"
+			},
+			{
+				"command": "laravelCommands.runOptimize",
+				"title": "optimize",
+				"category": "Artisan Misc"
+			},
+			{
+				"command": "laravelCommands.runRouteList",
+				"title": "route:list",
+				"category": "Artisan Misc"
+			}
+		]
 	},
 	"scripts": {
 		"lint": "eslint .",
