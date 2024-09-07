@@ -1,4 +1,4 @@
-# Laravel Artisan Helper for VSCode
+# Laravel Command Suite for VSCode
 
 <div align="center">
   <img width="650px" src="./assets/banner.png" />
@@ -7,7 +7,7 @@
 
 ## Introduction
 
-Laravel Artisan Helper for Visual Studio Code provides a seamless experience when working with Laravel projects. It integrates many Laravel Artisan commands into VSCode, allowing you to run and manage commands directly from the activity bar. The extension supports many Artisan commands such as `make`, `migrate`, and `serve`, and provides a convenient user interface to interact with them.
+Laravel Command Suite for Visual Studio Code provides a seamless experience when working with Laravel projects. It integrates many Laravel Artisan commands into VSCode, allowing you to run and manage commands directly from the activity bar. The extension supports many Artisan commands such as `make`, `migrate`, and `serve`, and provides a convenient user interface to interact with them.
 
 ## Features
 
@@ -22,11 +22,14 @@ Laravel Artisan Helper for Visual Studio Code provides a seamless experience whe
 ### Migrate & Database and Misc
 <img src="./assets/list-of-migrate-database-and-misc.png">
 
+### Composer group
+<img src="./assets/list-of-composer-group.png">
+
 ## Installation
 
 1. Open VSCode.
 2. Navigate to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window.
-3. Search for `Laravel Artisan Helper` and click `Install` to install the extension.
+3. Search for `Laravel Command Suite` and click `Install` to install the extension.
 
 ## Usage
 
@@ -36,13 +39,23 @@ The extension is activated automatically when you open a Laravel project that co
 
 ### Accessing Laravel Commands
 
-Once activated, you will see a new "Laravel Tools" icon in the Activity Bar. Click on it to access various Laravel commands categorized into:
+Once activated, you will see a new "Laravel Command Suite" icon in the Activity Bar. Click on it to access various Laravel commands categorized into:
 
+**Artisan Commands**:
 - **Make**: Commands for creating new Laravel components such as controllers, models, migrations, and more.
 - **Migrate & Database**: Commands for managing database migrations and seeding.
 - **Misc**: Miscellaneous Laravel commands like serving the application and listing routes.
 
-### Running Artisan Commands
+**Composer Commands**:
+- **Basic**: Basic Composer commands for project setup.
+- **Dependencies**: Commands to manage and check dependencies.
+- **Project Management**: Commands for managing and validating your project.
+- **Configuration**: Commands for configuration and global settings.
+- **Scripts**: Commands to run project scripts.
+- **Miscellaneous**: Other useful Composer commands.
+
+
+### Running Artisan and Composer Commands
 
 1. Click on the desired command in the sidebar.
 2. If the command requires input (e.g., the name of a new controller), you will be prompted to enter the required information.
@@ -58,9 +71,14 @@ Once activated, you will see a new "Laravel Tools" icon in the Activity Bar. Cli
 
 No additional configuration is required. The extension will automatically detect Laravel projects based on the presence of the `artisan` file.
 
+## Settings
+
+You can enable/disable the confirmation prompt when executing Artisan or Composer commands in the extension settings.
+<img src="./assets/settings.png">
+
 ## Contributing
 
-Contributions are welcome! If you have suggestions or improvements, please open an issue or submit a pull request on the [GitHub repository](https://github.com/ntkhang03/laravel-artisan-helper).
+Contributions are welcome! If you have suggestions or improvements, please open an issue or submit a pull request on the [GitHub repository](https://github.com/ntkhang03/laravel-command-suite).
 
 ## License
 
