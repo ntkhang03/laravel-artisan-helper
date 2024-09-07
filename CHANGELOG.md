@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.3] - 2024-09-07
+### Changed
+- Renamed the project to `Laravel Command Suite`.
+
+### Added
+- Added categories for Composer commands:
+  - **Basic**: Commands for managing Composer packages.
+  - **Dependencies**: Commands for managing Composer dependencies.
+  - **Project Management**: Commands for managing Composer project settings.
+  - **Configuration**: Commands for managing Composer configuration.
+  - **Scripts**: Commands for managing Composer scripts.
+  - **Miscellaneous**: Miscellaneous Composer commands.
+- Added settings to enable/disable the confirmation prompt when executing Artisan or Composer commands.
+- Added the ability to run migration commands in the context menu when right-clicking on a file or folder in the Explorer view.
+
+## [0.0.2] - 2024-08-26
+
+### Added
+- Add Command Palette.
+
+---
+
 ## [0.0.1] - 2024-08-26
 
 ### Added
@@ -27,9 +49,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.0.2] - 2024-08-26
-
-### Added
-- Add Command Palette.
-
-For more information, visit the [extension repository](https://github.com/your-username/laravel-support).
+For more information, visit the [extension repository](https://github.com/ntkhang03/laravel-command-suite).

@@ -1,0 +1,566 @@
+{
+	"artisan": [
+		{
+			"label": "Make",
+			"icon": "new-file",
+			"description": "Create new files",
+			"children": [
+				{
+					"label": "make:controller",
+					"command": "laravel-command-suite--artisan-command.runMakeController",
+					"description": "Create a new controller",
+					"prompt": "Enter controller name",
+					"terminalCommand": "php artisan make:controller"
+				},
+				{
+					"label": "make:model",
+					"command": "laravel-command-suite--artisan-command.runMakeModel",
+					"description": "Create a new model",
+					"prompt": "Enter model name",
+					"terminalCommand": "php artisan make:model"
+				},
+				{
+					"label": "make:migration",
+					"command": "laravel-command-suite--artisan-command.runMakeMigration",
+					"description": "Create a new migration file",
+					"prompt": "Enter migration name",
+					"terminalCommand": "php artisan make:migration"
+				},
+				{
+					"label": "make:seeder",
+					"command": "laravel-command-suite--artisan-command.runMakeSeeder",
+					"description": "Create a new seeder",
+					"prompt": "Enter seeder name",
+					"terminalCommand": "php artisan make:seeder"
+				},
+				{
+					"label": "make:factory",
+					"command": "laravel-command-suite--artisan-command.runMakeFactory",
+					"description": "Create a new factory",
+					"prompt": "Enter factory name",
+					"terminalCommand": "php artisan make:factory"
+				},
+				{
+					"label": "make:middleware",
+					"command": "laravel-command-suite--artisan-command.runMakeMiddleware",
+					"description": "Create a new middleware",
+					"prompt": "Enter middleware name",
+					"terminalCommand": "php artisan make:middleware"
+				},
+				{
+					"label": "make:request",
+					"command": "laravel-command-suite--artisan-command.runMakeRequest",
+					"description": "Create a new form request",
+					"prompt": "Enter request name",
+					"terminalCommand": "php artisan make:request"
+				},
+				{
+					"label": "make:event",
+					"command": "laravel-command-suite--artisan-command.runMakeEvent",
+					"description": "Create a new event",
+					"prompt": "Enter event name",
+					"terminalCommand": "php artisan make:event"
+				},
+				{
+					"label": "make:listener",
+					"command": "laravel-command-suite--artisan-command.runMakeListener",
+					"description": "Create a new listener",
+					"prompt": "Enter listener name",
+					"terminalCommand": "php artisan make:listener"
+				},
+				{
+					"label": "make:command",
+					"command": "laravel-command-suite--artisan-command.runMakeCommand",
+					"description": "Create a new artisan command",
+					"prompt": "Enter command name",
+					"terminalCommand": "php artisan make:command"
+				},
+				{
+					"label": "make:job",
+					"command": "laravel-command-suite--artisan-command.runMakeJob",
+					"description": "Create a new job",
+					"prompt": "Enter job name",
+					"terminalCommand": "php artisan make:job"
+				},
+				{
+					"label": "make:policy",
+					"command": "laravel-command-suite--artisan-command.runMakePolicy",
+					"description": "Create a new policy",
+					"prompt": "Enter policy name",
+					"terminalCommand": "php artisan make:policy"
+				},
+				{
+					"label": "make:provider",
+					"command": "laravel-command-suite--artisan-command.runMakeProvider",
+					"description": "Create a new service provider",
+					"prompt": "Enter provider name",
+					"terminalCommand": "php artisan make:provider"
+				},
+				{
+					"label": "make:test",
+					"command": "laravel-command-suite--artisan-command.runMakeTest",
+					"description": "Create a new test",
+					"prompt": "Enter test name",
+					"terminalCommand": "php artisan make:test"
+				},
+				{
+					"label": "make:mail",
+					"command": "laravel-command-suite--artisan-command.runMakeMail",
+					"description": "Create a new mailable class",
+					"prompt": "Enter mail class name",
+					"terminalCommand": "php artisan make:mail"
+				},
+				{
+					"label": "make:notification",
+					"command": "laravel-command-suite--artisan-command.runMakeNotification",
+					"description": "Create a new notification",
+					"prompt": "Enter notification name",
+					"terminalCommand": "php artisan make:notification"
+				},
+				{
+					"label": "make:resource",
+					"command": "laravel-command-suite--artisan-command.runMakeResource",
+					"description": "Create a new API resource",
+					"prompt": "Enter resource name",
+					"terminalCommand": "php artisan make:resource"
+				},
+				{
+					"label": "make:rule",
+					"command": "laravel-command-suite--artisan-command.runMakeRule",
+					"description": "Create a new custom validation rule",
+					"prompt": "Enter rule name",
+					"terminalCommand": "php artisan make:rule"
+				},
+				{
+					"label": "make:observer",
+					"command": "laravel-command-suite--artisan-command.runMakeObserver",
+					"description": "Create a new observer",
+					"prompt": "Enter observer name",
+					"terminalCommand": "php artisan make:observer"
+				},
+				{
+					"label": "make:channel",
+					"command": "laravel-command-suite--artisan-command.runMakeChannel",
+					"description": "Create a new broadcasting channel",
+					"prompt": "Enter channel name",
+					"terminalCommand": "php artisan make:channel"
+				},
+				{
+					"label": "make:exception",
+					"command": "laravel-command-suite--artisan-command.runMakeException",
+					"description": "Create a new custom exception",
+					"prompt": "Enter exception name",
+					"terminalCommand": "php artisan make:exception"
+				},
+				{
+					"label": "make:console",
+					"command": "laravel-command-suite--artisan-command.runMakeConsole",
+					"description": "Create a new console command",
+					"prompt": "Enter console command name",
+					"terminalCommand": "php artisan make:console"
+				},
+				{
+					"label": "make:scope",
+					"command": "laravel-command-suite--artisan-command.runMakeScope",
+					"description": "Create a new query scope",
+					"prompt": "Enter scope name",
+					"terminalCommand": "php artisan make:scope"
+				},
+				{
+					"label": "make:cast",
+					"command": "laravel-command-suite--artisan-command.runMakeCast",
+					"description": "Create a new custom Eloquent cast",
+					"prompt": "Enter cast name",
+					"terminalCommand": "php artisan make:cast"
+				},
+				{
+					"label": "make:component",
+					"command": "laravel-command-suite--artisan-command.runMakeComponent",
+					"description": "Create a new Blade component",
+					"prompt": "Enter component name",
+					"terminalCommand": "php artisan make:component"
+				}
+			]
+		},
+		{
+			"label": "Migrate & Database",
+			"icon": "database",
+			"description": "Run database migrations",
+			"children": [
+				{
+					"label": "migrate",
+					"command": "laravel-command-suite--db-migrate-command.runMigrate",
+					"description": "Run the database migrations",
+					"prompt": null,
+					"terminalCommand": "php artisan migrate"
+				},
+				{
+					"label": "migrate --force",
+					"command": "laravel-command-suite--db-migrate-command.runMigrateWithForce",
+					"description": "Run the database migrations with force",
+					"prompt": null,
+					"terminalCommand": "php artisan migrate --force"
+				},
+				{
+					"label": "migrate --path",
+					"command": "laravel-command-suite--db-migrate-command.runMigrateWithPath",
+					"description": "Run the database migrations from a specific path",
+					"prompt": "Enter migration path",
+					"terminalCommand": "php artisan migrate --path"
+				},
+				{
+					"label": "migrate:rollback",
+					"command": "laravel-command-suite--db-migrate-command.runMigrateRollback",
+					"description": "Rollback the last database migration",
+					"prompt": null,
+					"terminalCommand": "php artisan migrate:rollback"
+				},
+				{
+					"label": "migrate:rollback --step",
+					"command": "laravel-command-suite--db-migrate-command.runMigrateRollbackWithStep",
+					"description": "Rollback the last database migration with step",
+					"prompt": "Enter step",
+					"terminalCommand": "php artisan migrate:rollback --step"
+				},
+				{
+					"label": "migrate:refresh",
+					"command": "laravel-command-suite--db-migrate-command.runMigrateRefresh",
+					"description": "Reset and re-run all migrations",
+					"prompt": null,
+					"terminalCommand": "php artisan migrate:refresh"
+				},
+				{
+					"label": "migrate:refresh --seed",
+					"command": "laravel-command-suite--db-migrate-command.runMigrateRefreshWithSeed",
+					"description": "Reset and re-run all migrations and seed the database",
+					"prompt": null,
+					"terminalCommand": "php artisan migrate:refresh --seed"
+				},
+				{
+					"label": "migrate:reset",
+					"command": "laravel-command-suite--db-migrate-command.runMigrateReset",
+					"description": "Rollback all database migrations",
+					"prompt": null,
+					"terminalCommand": "php artisan migrate:reset"
+				},
+				{
+					"label": "migrate:status",
+					"command": "laravel-command-suite--db-migrate-command.runMigrateStatus",
+					"description": "Show the status of each migration",
+					"prompt": null,
+					"terminalCommand": "php artisan migrate:status"
+				},
+				{
+					"label": "migrate:fresh",
+					"command": "laravel-command-suite--db-migrate-command.runMigrateFresh",
+					"description": "Drop all tables and re-run all migrations",
+					"prompt": null,
+					"terminalCommand": "php artisan migrate:fresh"
+				},
+				{
+					"label": "migrate:install",
+					"command": "laravel-command-suite--db-migrate-command.runMigrateInstall",
+					"description": "Create the migration repository",
+					"prompt": null,
+					"terminalCommand": "php artisan migrate:install"
+				},
+				{
+					"label": "migrate:make",
+					"command": "laravel-command-suite--db-migrate-command.runMakeMigration",
+					"description": "Create a new migration file",
+					"prompt": "Enter migration name",
+					"terminalCommand": "php artisan make:migration"
+				},
+				{
+					"label": "db:seed",
+					"command": "laravel-command-suite--db-migrate-command.runDbSeed",
+					"description": "Seed the database with records",
+					"prompt": null,
+					"terminalCommand": "php artisan db:seed"
+				},
+				{
+					"label": "db:seed --class",
+					"command": "laravel-command-suite--db-migrate-command.runDbSeedWithClass",
+					"description": "Seed the database with records from a specific class",
+					"prompt": "Enter seeder class name",
+					"terminalCommand": "php artisan db:seed --class"
+				},
+				{
+					"label": "db:wipe",
+					"command": "laravel-command-suite--db-migrate-command.runDbWipe",
+					"description": "Drop all tables, views, and types",
+					"prompt": null,
+					"terminalCommand": "php artisan db:wipe"
+				},
+				{
+					"label": "db:show",
+					"command": "laravel-command-suite--db-migrate-command.runDbShow",
+					"description": "Show the database table status",
+					"prompt": null,
+					"terminalCommand": "php artisan db:show"
+				},
+				{
+					"label": "db:table",
+					"command": "laravel-command-suite--db-migrate-command.runDbTable",
+					"description": "Describe the given database table",
+					"prompt": "Enter table name",
+					"terminalCommand": "php artisan db:table"
+				},
+				{
+					"label": "db:prune",
+					"command": "laravel-command-suite--db-migrate-command.runDbPrune",
+					"description": "Prune models that are no longer needed",
+					"prompt": null,
+					"terminalCommand": "php artisan db:prune"
+				},
+				{
+					"label": "db:monitor",
+					"command": "laravel-command-suite--db-migrate-command.runDbMonitor",
+					"description": "Monitor the status of the database",
+					"prompt": null,
+					"terminalCommand": "php artisan db:monitor"
+				}
+			]
+		},
+		{
+			"label": "Misc",
+			"icon": "tools",
+			"description": "Miscellaneous Laravel commands",
+			"children": [
+				{
+					"label": "serve",
+					"command": "laravel-command-suite--misc-command.runServe",
+					"description": "Serve the application on the PHP development server",
+					"prompt": null,
+					"terminalCommand": "php artisan serve"
+				},
+				{
+					"label": "optimize",
+					"command": "laravel-command-suite--misc-command.runOptimize",
+					"description": "Optimize the framework for better performance",
+					"prompt": null,
+					"terminalCommand": "php artisan optimize"
+				},
+				{
+					"label": "route:list",
+					"command": "laravel-command-suite--misc-command.runRouteList",
+					"description": "List all registered routes",
+					"prompt": null,
+					"terminalCommand": "php artisan route:list"
+				}
+			]
+		}
+	],
+	"composer": [
+		{
+			"label": "Basic",
+			"icon": "gear",
+			"description": "Basic Composer commands for project setup",
+			"children": [
+				{
+					"label": "install",
+					"command": "laravel-composer-helper--basic-command.runInstall",
+					"description": "Install all packages listed in composer.json",
+					"terminalCommand": "composer install",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "update",
+					"command": "laravel-composer-helper--basic-command.runUpdate",
+					"description": "Update all packages to the latest versions based on composer.json",
+					"terminalCommand": "composer update",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "require",
+					"command": "laravel-composer-helper--basic-command.runRequire",
+					"description": "Add a package to the project and update composer.json",
+					"terminalCommand": "composer require",
+					"prompt": "Please enter the package name:",
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "remove",
+					"command": "laravel-composer-helper--basic-command.runRemove",
+					"description": "Remove a package from the project and update composer.json",
+					"terminalCommand": "composer remove",
+					"prompt": "Please enter the package name:",
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "create-project laravel/laravel",
+					"command": "laravel-composer-helper--basic-command.runCreateProject",
+					"description": "Create a new project with Laravel",
+					"terminalCommand": "composer create-project laravel/laravel",
+					"prompt": "Please enter the project name:",
+					"willCreateNewFolderAfterExec": true
+				},
+				{
+					"label": "create-project",
+					"command": "laravel-composer-helper--basic-command.runCreateProjectWithoutPackage",
+					"description": "Create a new project without a package name",
+					"terminalCommand": "composer create-project",
+					"prompt": "Please enter the project name:",
+					"willCreateNewFolderAfterExec": true
+				},
+				{
+					"label": "create-project <custom-package>",
+					"command": "laravel-composer-helper--basic-command.runCreateProjectPackage",
+					"description": "Create a new project with a custom package",
+					"terminalCommand": "<CREATE_PROJECT_WITH_CUSTOM_PACKAGE>",
+					"prompt": "Please enter the project name:",
+					"willCreateNewFolderAfterExec": true
+				}
+			]
+		},
+		{
+			"label": "Dependencies",
+			"icon": "library",
+			"description": "Commands to manage and check dependencies",
+			"children": [
+				{
+					"label": "dump-autoload",
+					"command": "laravel-composer-helper--dependencies-command.runDumpAutoload",
+					"description": "Re-generate the autoload files without reinstalling packages",
+					"terminalCommand": "composer dump-autoload",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "outdated",
+					"command": "laravel-composer-helper--dependencies-command.runOutdated",
+					"description": "Show list of outdated packages",
+					"terminalCommand": "composer outdated",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "show",
+					"command": "laravel-composer-helper--dependencies-command.runShow",
+					"description": "Display details about installed or installable packages",
+					"terminalCommand": "composer show",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				}
+			]
+		},
+		{
+			"label": "Project Management",
+			"icon": "project",
+			"description": "Commands for managing and validating your project",
+			"children": [
+				{
+					"label": "validate",
+					"command": "laravel-composer-helper--project-management-command.runValidate",
+					"description": "Validate the composer.json file",
+					"terminalCommand": "composer validate",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "diagnose",
+					"command": "laravel-composer-helper--project-management-command.runDiagnose",
+					"description": "Check the system and project for potential issues",
+					"terminalCommand": "composer diagnose",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "audit",
+					"command": "laravel-composer-helper--project-management-command.runAudit",
+					"description": "Check for security vulnerabilities in installed packages",
+					"terminalCommand": "composer audit",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "check-platform-reqs",
+					"command": "laravel-composer-helper--project-management-command.runCheckPlatformReqs",
+					"description": "Check if the system meets platform requirements",
+					"terminalCommand": "composer check-platform-reqs",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				}
+			]
+		},
+		{
+			"label": "Configuration",
+			"icon": "settings",
+			"description": "Commands for configuration and global settings",
+			"children": [
+				{
+					"label": "config",
+					"command": "laravel-composer-helper--configuration-command.runConfig",
+					"description": "Manage configuration settings in composer.json",
+					"terminalCommand": "composer config",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "global require",
+					"command": "laravel-composer-helper--configuration-command.runGlobalRequire",
+					"description": "Install a package globally",
+					"terminalCommand": "composer global require",
+					"prompt": "Please enter the package name:",
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "self-update",
+					"command": "laravel-composer-helper--configuration-command.runSelfUpdate",
+					"description": "Update Composer to the latest version",
+					"terminalCommand": "composer self-update",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				}
+			]
+		},
+		{
+			"label": "Scripts",
+			"icon": "code",
+			"description": "Commands to run project scripts",
+			"children": [
+				{
+					"label": "run-script",
+					"command": "laravel-composer-helper--scripts-command.runRunScript",
+					"description": "Run a script defined in composer.json",
+					"terminalCommand": "composer run-script",
+					"prompt": "Please enter the script name:",
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "scripts",
+					"command": "laravel-composer-helper--scripts-command.runScripts",
+					"description": "List all available scripts in the project",
+					"terminalCommand": "composer scripts",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				}
+			]
+		},
+		{
+			"label": "Miscellaneous",
+			"icon": "gripper",
+			"description": "Other useful Composer commands",
+			"children": [
+				{
+					"label": "fund",
+					"command": "laravel-composer-helper--misc-command.runFund",
+					"description": "Show funding options for packages used in the project",
+					"terminalCommand": "composer fund",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				},
+				{
+					"label": "licenses",
+					"command": "laravel-composer-helper--misc-command.runLicenses",
+					"description": "List licenses for all installed packages",
+					"terminalCommand": "composer licenses",
+					"prompt": null,
+					"willCreateNewFolderAfterExec": false
+				}
+			]
+		}
+	]
+}

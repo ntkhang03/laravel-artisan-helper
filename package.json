@@ -1,13 +1,13 @@
 {
 	"publisher": "ntkhang03",
-	"name": "laravel-artisan-helper",
-	"displayName": "Laravel Artisan Helper",
-	"description": "VSCode extension for Laravel with Artisan command support and migration tools.",
+	"name": "laravel-command-suite",
+	"displayName": "Laravel Command Suite",
+	"description": "Laravel Command Suite is a VSCode extension that integrates Laravel Artisan and Composer commands for streamlined development.",
 	"author": "NTKhang",
 	"license": "MIT",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"engines": {
-		"vscode": "^1.89.0"
+		"vscode": "^1.75.1"
 	},
 	"icon": "assets/icon.png",
 	"categories": [
@@ -17,243 +17,808 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ntkhang03/laravel-artisan-helper.git"
+		"url": "https://github.com/ntkhang03/laravel-command-suite.git"
 	},
 	"activationEvents": [],
 	"main": "./extension.js",
 	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Laravel Command Suite",
+			"properties": {
+				"laravelCommandSuite.composerCustomPackages": {
+					"type": "array",
+					"markdownDescription": "List of composer packages",
+					"default": [],
+					"items": {
+						"type": "string"
+					}
+				},
+				"laravelCommandSuite.askForConfirmation.allCommands": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation prompts for `all commands`, if set to `false`, all commands will run without confirmation"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeController": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:controller` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeModel": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:model` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeMigration": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate:make` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeSeeder": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:seeder` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeFactory": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:factory` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeMiddleware": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:middleware` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeRequest": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:request` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeEvent": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:event` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeListener": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:listener` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeCommand": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:command` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeJob": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:job` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakePolicy": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:policy` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeProvider": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:provider` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeTest": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:test` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeMail": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:mail` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeNotification": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:notification` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeResource": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:resource` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeRule": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:rule` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeObserver": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:observer` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeChannel": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:channel` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeException": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:exception` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeConsole": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:console` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeScope": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:scope` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeCast": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:cast` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMakeComponent": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Make > make:component` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrate": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrateWithForce": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate --force` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrateWithPath": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate --path` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrateRollback": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate:rollback` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrateRollbackWithStep": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate:rollback --step` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrateRefresh": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate:refresh` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrateRefreshWithSeed": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate:refresh --seed` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrateReset": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate:reset` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrateStatus": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate:status` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrateFresh": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate:fresh` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runMigrateInstall": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > migrate:install` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runDbSeed": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > db:seed` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runDbSeedWithClass": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > db:seed --class` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runDbWipe": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > db:wipe` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runDbShow": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > db:show` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runDbTable": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > db:table` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runDbPrune": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > db:prune` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runDbMonitor": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Migrate & Database > db:monitor` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runServe": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Misc > serve` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runOptimize": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Misc > optimize` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runRouteList": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Artisan > Misc > route:list` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runInstall": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Basic > install` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runUpdate": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Basic > update` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runRequire": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Basic > require` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runRemove": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Basic > remove` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runCreateProject": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Basic > create-project laravel/laravel` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runCreateProjectWithoutPackage": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Basic > create-project` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runCreateProjectPackage": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Basic > create-project <custom-package>` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runDumpAutoload": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Dependencies > dump-autoload` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runOutdated": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Dependencies > outdated` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runShow": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Dependencies > show` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runValidate": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Project Management > validate` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runDiagnose": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Project Management > diagnose` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runAudit": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Project Management > audit` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runCheckPlatformReqs": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Project Management > check-platform-reqs` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runConfig": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Configuration > config` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runGlobalRequire": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Configuration > global require` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runSelfUpdate": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Configuration > self-update` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runRunScript": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Scripts > run-script` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runScripts": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Scripts > scripts` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runFund": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Miscellaneous > fund` command"
+				},
+				"laravelCommandSuite.askForConfirmation.runLicenses": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable confirmation for `Composer > Miscellaneous > licenses` command"
+				}
+			}
+		},
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "laravel-support",
-					"title": "Laravel Tools",
+					"id": "laravel-command-suite",
+					"title": "Laravel Command Suite",
 					"icon": "assets/laravel.svg"
 				}
 			]
 		},
+		"viewsWelcome": [
+			{
+				"contents": "We don't see a Laravel project here. In order to use this extension, you need to open a Laravel project.\n[Open Folder](command:vscode.openFolder)",
+				"enablement": "laravelProjectLoaded == false",
+				"view": "laravel-command-suite.commands"
+			}
+		],
 		"views": {
-			"laravel-support": [
+			"laravel-command-suite": [
 				{
-					"id": "laravel-support.commands",
-					"name": "Commands",
+					"id": "laravel-command-suite.commands",
+					"name": "Artisan Commands",
 					"initialSize": 0.1
 				},
 				{
-					"id": "laravel.commands",
-					"name": "Commands"
+					"id": "laravel-command-suite.composer-commands",
+					"name": "Composer Commands",
+					"initialSize": 0.1
+				}
+			]
+		},
+		"menus": {
+			"editor/title/context": [
+				{
+					"command": "laravel-command-suite--db-migrate-command.runMigrateThisFile",
+					"group": "0LaravelCommandSuite",
+					"when": "resourceLangId == php"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "laravel-command-suite--db-migrate-command.runMigrateThisFolder",
+					"group": "0LaravelCommandSuite",
+					"when": "explorerResourceIsFolder"
+				},
+				{
+					"command": "laravel-command-suite--db-migrate-command.runMigrateThisFile",
+					"group": "0LaravelCommandSuite",
+					"when": "!explorerResourceIsFolder && resourceLangId == php"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "laravel-command-suite.template.exec-command",
+					"group": "inline@1",
+					"when": "view == laravel-command-suite.composer-commands && viewItem == templateItem"
+				},
+				{
+					"command": "laravel-command-suite.template.add-template",
+					"group": "inline@2",
+					"when": "view == laravel-command-suite.composer-commands && viewItem == composerTemplateDropdown"
+				},
+				{
+					"command": "laravel-command-suite.template.edit-template",
+					"group": "inline@3",
+					"when": "view == laravel-command-suite.composer-commands && viewItem == templateItem"
+				},
+				{
+					"command": "laravel-command-suite.template.delete-template",
+					"group": "inline@4",
+					"when": "view == laravel-command-suite.composer-commands && viewItem == templateItem"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "laravelMakeCommands.runMakeController",
+				"command": "laravel-command-suite--artisan-command.runMakeController",
 				"title": "make:controller",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeModel",
+				"command": "laravel-command-suite--artisan-command.runMakeModel",
 				"title": "make:model",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeMigration",
+				"command": "laravel-command-suite--artisan-command.runMakeMigration",
 				"title": "make:migration",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeSeeder",
+				"command": "laravel-command-suite--artisan-command.runMakeSeeder",
 				"title": "make:seeder",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeFactory",
+				"command": "laravel-command-suite--artisan-command.runMakeFactory",
 				"title": "make:factory",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeMiddleware",
+				"command": "laravel-command-suite--artisan-command.runMakeMiddleware",
 				"title": "make:middleware",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeRequest",
+				"command": "laravel-command-suite--artisan-command.runMakeRequest",
 				"title": "make:request",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeEvent",
+				"command": "laravel-command-suite--artisan-command.runMakeEvent",
 				"title": "make:event",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeListener",
+				"command": "laravel-command-suite--artisan-command.runMakeListener",
 				"title": "make:listener",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeCommand",
+				"command": "laravel-command-suite--artisan-command.runMakeCommand",
 				"title": "make:command",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeJob",
+				"command": "laravel-command-suite--artisan-command.runMakeJob",
 				"title": "make:job",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakePolicy",
+				"command": "laravel-command-suite--artisan-command.runMakePolicy",
 				"title": "make:policy",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeProvider",
+				"command": "laravel-command-suite--artisan-command.runMakeProvider",
 				"title": "make:provider",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeTest",
+				"command": "laravel-command-suite--artisan-command.runMakeTest",
 				"title": "make:test",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeMail",
+				"command": "laravel-command-suite--artisan-command.runMakeMail",
 				"title": "make:mail",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeNotification",
+				"command": "laravel-command-suite--artisan-command.runMakeNotification",
 				"title": "make:notification",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeResource",
+				"command": "laravel-command-suite--artisan-command.runMakeResource",
 				"title": "make:resource",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeRule",
+				"command": "laravel-command-suite--artisan-command.runMakeRule",
 				"title": "make:rule",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeObserver",
+				"command": "laravel-command-suite--artisan-command.runMakeObserver",
 				"title": "make:observer",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeChannel",
+				"command": "laravel-command-suite--artisan-command.runMakeChannel",
 				"title": "make:channel",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeException",
+				"command": "laravel-command-suite--artisan-command.runMakeException",
 				"title": "make:exception",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeConsole",
+				"command": "laravel-command-suite--artisan-command.runMakeConsole",
 				"title": "make:console",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeScope",
+				"command": "laravel-command-suite--artisan-command.runMakeScope",
 				"title": "make:scope",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeCast",
+				"command": "laravel-command-suite--artisan-command.runMakeCast",
 				"title": "make:cast",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMakeCommands.runMakeComponent",
+				"command": "laravel-command-suite--artisan-command.runMakeComponent",
 				"title": "make:component",
 				"category": "Artisan Make"
 			},
 			{
-				"command": "laravelMigrateCommands.runMigrate",
+				"command": "laravel-command-suite--db-migrate-command.runMigrate",
 				"title": "migrate",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runMigrateRollback",
+				"command": "laravel-command-suite--db-migrate-command.runMigrateWithForce",
+				"title": "migrate --force",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravel-command-suite--db-migrate-command.runMigrateWithPath",
+				"title": "migrate --path",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravel-command-suite--db-migrate-command.runMigrateThisFolder",
+				"title": "Run migration in this folder",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravel-command-suite--db-migrate-command.runMigrateThisFile",
+				"title": "Run migration in this file",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravel-command-suite--db-migrate-command.runMigrateRollback",
 				"title": "migrate:rollback",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runMigrateRefresh",
+				"command": "laravel-command-suite--db-migrate-command.runMigrateRollbackWithStep",
+				"title": "migrate:rollback --step",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravel-command-suite--db-migrate-command.runMigrateRefresh",
 				"title": "migrate:refresh",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runMigrateReset",
+				"command": "laravel-command-suite--db-migrate-command.runMigrateRefreshWithSeed",
+				"title": "migrate:refresh --seed",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravel-command-suite--db-migrate-command.runMigrateReset",
 				"title": "migrate:reset",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runMigrateStatus",
+				"command": "laravel-command-suite--db-migrate-command.runMigrateStatus",
 				"title": "migrate:status",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runMigrateFresh",
+				"command": "laravel-command-suite--db-migrate-command.runMigrateFresh",
 				"title": "migrate:fresh",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runMigrateInstall",
+				"command": "laravel-command-suite--db-migrate-command.runMigrateInstall",
 				"title": "migrate:install",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runMakeMigration",
+				"command": "laravel-command-suite--db-migrate-command.runMakeMigration",
 				"title": "migrate:make",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runDbSeed",
+				"command": "laravel-command-suite--db-migrate-command.runDbSeed",
 				"title": "db:seed",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runDbWipe",
+				"command": "laravel-command-suite--db-migrate-command.runDbSeedWithClass",
+				"title": "db:seed --class",
+				"category": "Artisan Migrate & Database"
+			},
+			{
+				"command": "laravel-command-suite--db-migrate-command.runDbWipe",
 				"title": "db:wipe",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runDbShow",
+				"command": "laravel-command-suite--db-migrate-command.runDbShow",
 				"title": "db:show",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runDbTable",
+				"command": "laravel-command-suite--db-migrate-command.runDbTable",
 				"title": "db:table",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runDbPrune",
+				"command": "laravel-command-suite--db-migrate-command.runDbPrune",
 				"title": "db:prune",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelMigrateCommands.runDbMonitor",
+				"command": "laravel-command-suite--db-migrate-command.runDbMonitor",
 				"title": "db:monitor",
 				"category": "Artisan Migrate & Database"
 			},
 			{
-				"command": "laravelCommands.runServe",
+				"command": "laravel-command-suite--misc-command.runServe",
 				"title": "serve",
 				"category": "Artisan Misc"
 			},
 			{
-				"command": "laravelCommands.runOptimize",
+				"command": "laravel-command-suite--misc-command.runOptimize",
 				"title": "optimize",
 				"category": "Artisan Misc"
 			},
 			{
-				"command": "laravelCommands.runRouteList",
+				"command": "laravel-command-suite--misc-command.runRouteList",
 				"title": "route:list",
 				"category": "Artisan Misc"
+			},
+			{
+				"command": "laravel-composer-helper--basic-command.runInstall",
+				"title": "Install packages",
+				"category": "Basic"
+			},
+			{
+				"command": "laravel-composer-helper--basic-command.runUpdate",
+				"title": "Update packages",
+				"category": "Basic"
+			},
+			{
+				"command": "laravel-composer-helper--basic-command.runRequire",
+				"title": "Require a package",
+				"category": "Basic"
+			},
+			{
+				"command": "laravel-composer-helper--basic-command.runRemove",
+				"title": "Remove a package",
+				"category": "Basic"
+			},
+			{
+				"command": "laravel-composer-helper--basic-command.runCreateProject",
+				"title": "Create a new project",
+				"category": "Basic"
+			},
+			{
+				"command": "laravel-composer-helper--basic-command.runCreateProjectWithoutTemplate",
+				"title": "Create a new project without template",
+				"category": "Basic"
+			},
+			{
+				"command": "laravel-composer-helper--basic-command.runCreateProjectTemplate",
+				"title": "Create a new project",
+				"category": "Basic"
+			},
+			{
+				"command": "laravel-composer-helper--dependencies-command.runDumpAutoload",
+				"title": "Dump Autoload",
+				"category": "Dependencies"
+			},
+			{
+				"command": "laravel-composer-helper--dependencies-command.runOutdated",
+				"title": "Show outdated packages",
+				"category": "Dependencies"
+			},
+			{
+				"command": "laravel-composer-helper--dependencies-command.runShow",
+				"title": "Show package details",
+				"category": "Dependencies"
+			},
+			{
+				"command": "laravel-composer-helper--project-management-command.runValidate",
+				"title": "Validate composer.json",
+				"category": "Project Management"
+			},
+			{
+				"command": "laravel-composer-helper--project-management-command.runDiagnose",
+				"title": "Diagnose project issues",
+				"category": "Project Management"
+			},
+			{
+				"command": "laravel-composer-helper--project-management-command.runAudit",
+				"title": "Audit for vulnerabilities",
+				"category": "Project Management"
+			},
+			{
+				"command": "laravel-composer-helper--project-management-command.runCheckPlatformReqs",
+				"title": "Check platform requirements",
+				"category": "Project Management"
+			},
+			{
+				"command": "laravel-composer-helper--configuration-command.runConfig",
+				"title": "Manage configuration settings",
+				"category": "Configuration"
+			},
+			{
+				"command": "laravel-composer-helper--configuration-command.runGlobalRequire",
+				"title": "Install a global package",
+				"category": "Configuration"
+			},
+			{
+				"command": "laravel-composer-helper--configuration-command.runSelfUpdate",
+				"title": "Self-update Composer",
+				"category": "Configuration"
+			},
+			{
+				"command": "laravel-composer-helper--scripts-command.runRunScript",
+				"title": "Run a script",
+				"category": "Scripts"
+			},
+			{
+				"command": "laravel-composer-helper--scripts-command.runScripts",
+				"title": "List available scripts",
+				"category": "Scripts"
+			},
+			{
+				"command": "laravel-composer-helper--misc-command.runFund",
+				"title": "Show funding options",
+				"category": "Miscellaneous"
+			},
+			{
+				"command": "laravel-composer-helper--misc-command.runLicenses",
+				"title": "List package licenses",
+				"category": "Miscellaneous"
+			},
+			{
+				"command": "laravel-command-suite.template.exec-command",
+				"title": "Execute template",
+				"icon": "$(play)"
+			},
+			{
+				"command": "laravel-command-suite.template.add-template",
+				"title": "Add new template",
+				"icon": "$(add)"
+			},
+			{
+				"command": "laravel-command-suite.template.edit-template",
+				"title": "Edit template",
+				"icon": "$(edit)"
+			},
+			{
+				"command": "laravel-command-suite.template.delete-template",
+				"title": "Delete template",
+				"icon": "$(trash)"
 			}
 		]
 	},
@@ -265,7 +830,7 @@
 	"devDependencies": {
 		"@types/mocha": "^10.0.7",
 		"@types/node": "20.x",
-		"@types/vscode": "^1.89.0",
+		"@types/vscode": "^1.75.1",
 		"@vscode/test-cli": "^0.0.9",
 		"@vscode/test-electron": "^2.4.0",
 		"eslint": "^8.57.0",
