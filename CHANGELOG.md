@@ -16,6 +16,11 @@ All notable changes to this project will be documented in this file.
   - **Miscellaneous**: Miscellaneous Composer commands.
 - Added settings to enable/disable the confirmation prompt when executing Artisan or Composer commands.
 - Added the ability to run migration commands in the context menu when right-clicking on a file or folder in the Explorer view.
+- 
+<img src="assets/run-migration-this-file.png">
+<br>
+<br>
+<img src="assets/run-migration-this-folder.png">
 
 ## [0.0.2] - 2024-08-26
 
