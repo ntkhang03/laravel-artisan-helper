@@ -1,26 +1,14 @@
 {
 	"env": {
-		"browser": false,
 		"commonjs": true,
-		"es6": true,
-		"node": true,
-		"mocha": true
+		"es2021": true,
+		"node": true
 	},
+	"extends": "eslint:recommended",
 	"parserOptions": {
-		"ecmaVersion": 2018,
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"sourceType": "module"
+		"ecmaVersion": 13
 	},
 	"rules": {
-		"no-const-assign": "warn",
-		"no-this-before-super": "warn",
-		"no-undef": "warn",
-		"no-unreachable": "warn",
-		"no-unused-vars": "warn",
-		"constructor-super": "warn",
-		"valid-typeof": "warn",
 		"no-prototype-builtins": 0,
 		"no-unused-vars": 1,
 		"comma-dangle": 1,
@@ -37,5 +25,55 @@
 		"no-unreachable": 1,
 		"no-var": 1,
 		"no-fallthrough": 1
-	}
+	},
+	"ignorePatterns": [
+		"*.eta",
+		"*.ejs"
+	],
+	"overrides": [
+		{
+			"env": {
+				"browser": true,
+				"es2021": false,
+				"node": false
+			},
+			"files": [
+				"./src/js/*",
+				"./public/js/*",
+				"./views/*"
+			],
+			"globals": {
+				"$": "readonly",
+				"define": "readonly",
+				"Dropzone": "readonly",
+				"Split": "readonly",
+				"Swal": "readonly",
+				"io": "readonly",
+				"Promise": "readonly",
+				"bootstrap": "readonly",
+				"Set": "readonly",
+				"List": "readonly",
+				"Toast": "readonly",
+				"XLSX": "readonly"
+			},
+			"rules": {
+				"no-prototype-builtins": 0,
+				"no-unused-vars": 1,
+				"comma-dangle": 1,
+				"no-redeclare": 0,
+				"prefer-const": 1,
+				"no-useless-escape": 0,
+				"no-mixed-spaces-and-tabs": 0,
+				"semi": 1,
+				"no-useless-catch": 0,
+				"no-empty": 0,
+				"use-isnan": 0,
+				"no-extra-semi": 1,
+				"no-async-promise-executor": 0,
+				"no-unreachable": 1,
+				"no-var": 1,
+				"no-fallthrough": 1
+			}
+		}
+	]
 }
