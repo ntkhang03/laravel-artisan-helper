@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.2] - 2024-09-13
+### Changed
+- Fix can't use `php artisan route:list` command.
+- Add button to `copy` and `open in browser` for route list.
+
 ## [0.0.1] - 2024-09-07
 ### Changed
 - Renamed the project to `Laravel Command Suite`.
