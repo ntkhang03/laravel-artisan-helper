@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.3] - 2024-09-13
+### Changed
+- Remove redundant forward slash in route url on route list when copying or opening in browser.
+- Save host name of project to user settings to use in route list.
+
 ## [0.0.2] - 2024-09-13
 ### Changed
 - Fix can't use `php artisan route:list` command.

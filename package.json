@@ -5,7 +5,7 @@
 	"description": "Laravel Command Suite is a VSCode extension that integrates Laravel Artisan and Composer commands for streamlined development.",
 	"author": "NTKhang",
 	"license": "MIT",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"engines": {
 		"vscode": "^1.75.1"
 	},
@@ -21,6 +21,16 @@
 	},
 	"activationEvents": [],
 	"main": "./extension.js",
+	"keywords": [
+		"laravel",
+		"artisan",
+		"composer",
+		"php",
+		"extension",
+		"vscode",
+		"laravel-artisan-helper",
+		"helper"
+	],
 	"contributes": {
 		"configuration": {
 			"type": "object",
@@ -33,6 +43,11 @@
 					"items": {
 						"type": "string"
 					}
+				},
+				"laravelCommandSuite.hostNames": {
+					"type": "object",
+					"default": {},
+					"markdownDescription": "A list of host names for Laravel projects used to open the project in the browser or copy the route URL to the clipboard via the `Artisan > Misc > route:list` command. If you have multiple Laravel projects, you can add them here.\n\n**Key**: Path to Laravel project, **Value**: Host name\n\nExample:\n```json\n{\n  \"C:/xampp/htdocs/project1\": \"http://localhost:3000\",\n  \"C:/xampp/htdocs/project2\": \"http://localhost:3001\"\n}\n```"
 				},
 				"laravelCommandSuite.askForConfirmation.allCommands": {
 					"type": "boolean",
