@@ -1,4 +1,4 @@
-module.exports = (projectName, routeListContent) => {
+module.exports = (projectName, routeListContent, hostName) => {
   return `<!DOCTYPE html>
 	<html lang="en">
 		<head>
@@ -71,7 +71,9 @@ module.exports = (projectName, routeListContent) => {
 			<br>
 			<label for="host">&nbsp;Input your host (this helps to copy the route link or open in browser)</label>
 			<br>
-			<input type="text" id="host" placeholder="Host" style="padding: 8px 16px; border: 1px solid var(--vscode-input-border, black); border-radius: 4px; margin-bottom: 16px; margin-top: .3rem; background-color: var(--vscode-input-background, white); color: var(--vscode-input-foreground, black);" value="http://localhost:8000">
+			<input type="text" id="host" placeholder="Host" style="padding: 8px 16px; border: 1px solid var(--vscode-input-border, black); border-radius: 4px; margin-bottom: 16px; margin-top: .3rem; background-color: var(--vscode-input-background, white); color: var(--vscode-input-foreground, black);" value="${
+        hostName || "http://localhost:8000"
+      }">
 			<table>
 				<thead>
 					<tr>
@@ -92,19 +94,32 @@ module.exports = (projectName, routeListContent) => {
 					vscode.postMessage({ command: "refreshRouteList" });
 				});
 
+				const events = ["input", "change", "paste"];
+				for (const event of events) {
+					document.getElementById("host").addEventListener(event, handleHostChange);
+				}
+
+				function handleHostChange() {
+					vscode.postMessage({ command: "updateHost", host: getHost() });
+				}
+
 				function getHost() {
 					return document.getElementById("host").value;
 				}
 
-				function copyToClipboard(text) {
+				function copyToClipboard(text, messageNotification) {
 					navigator.clipboard.writeText(text).then(() => {
-						vscode.postMessage({ command: "showInfo", message: "[Larvel Command Suite] Copied to your clipboard" });
+						vscode.postMessage({ command: "showInfo", message: messageNotification || "[Larvel Command Suite] Copied to your clipboard" });
 					});
 				}
 
 				function openInBrowser(uri) {
 					const host = document.getElementById("host").value;
-					vscode.postMessage({ command: "openInBrowser", uri: host + (host.endsWith("/") ? "" : "/") + uri });
+					vscode.postMessage({ command: "openInBrowser", uri: generateUrl(host, uri) });
+				}
+
+				function generateUrl(host, uri) {
+					return host + (host.endsWith("/") ? "" : "/") + (uri.startsWith("/") ? uri.slice(1) : (uri == "/" ? "" : uri));
 				}
 
 				function getResourseFromAssets(name) {
@@ -150,9 +165,10 @@ function formatRouteList(routeList) {
         <td>${routes[i].uri}</td>
         <td>${routes[i].path}</td>
 				<td style="text-align: center;">
-					<button onclick="copyToClipboard(getHost() + '/${
+					<button onclick="copyToClipboard(generateUrl(getHost(), '${
             routes[i].uri
-          }')" style="padding-top: 5px; background-color: #ffffff; color: black; border: none; cursor: pointer; border-radius: 4px;" title="Copy route link to clipboard">
+          }'), '[Larvel Command Suite] Route link copied to clipboard')"
+					style="padding-top: 5px; background-color: #ffffff; color: black; border: none; cursor: pointer; border-radius: 4px;" title="Copy route link to clipboard">
 						<svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M17.5 14H19C20.1046 14 21 13.1046 21 12V5C21 3.89543 20.1046 3 19 3H12C10.8954 3 10 3.89543 10 5V6.5M5 10H12C13.1046 10 14 10.8954 14 12V19C14 20.1046 13.1046 21 12 21H5C3.89543 21 3 20.1046 3 19V12C3 10.8954 3.89543 10 5 10Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>

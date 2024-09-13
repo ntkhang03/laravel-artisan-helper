@@ -275,6 +275,19 @@ function registerCommandRouteList(cmd, context) {
       else if (message.command === "showInfo") {
         vscode.window.showInformationMessage(message.message);
       }
+      // updateHost
+      else if (message.command === "updateHost") {
+        const hostNames = getConfigInspect("hostNames", {});
+        const host = message.host;
+        const rootPath = vscode.workspace.rootPath;
+
+        hostNames[rootPath] = host;
+        config.update(
+          "hostNames",
+          hostNames,
+          vscode.ConfigurationTarget.Global
+        );
+      }
     },
     undefined,
     context.subscriptions
@@ -442,7 +455,10 @@ function executeCommandAndUpdateWebview(panel, cmd, projectName) {
         outputChannel.appendLine(JSON.stringify(error));
         return;
       }
-      const htmlContent = tableTemplateRouteList(projectName, stdout);
+      const hostName = getConfigInspect("hostNames", {})[
+        vscode.workspace.rootPath
+      ];
+      const htmlContent = tableTemplateRouteList(projectName, stdout, hostName);
       panel.webview.html = htmlContent;
     }
   );
