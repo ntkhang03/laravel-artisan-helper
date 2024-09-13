@@ -256,7 +256,7 @@ function registerCommandRouteList(cmd, context) {
     "routeList",
     "Route List Of: " + projectName,
     vscode.ViewColumn.One,
-    { enableScripts: true }
+    { enableScripts: true, retainContextWhenHidden: true }
   );
 
   routeListPanels[projectName] = panel;
