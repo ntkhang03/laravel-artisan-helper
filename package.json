@@ -5,7 +5,7 @@
 	"description": "Laravel Command Suite is a VSCode extension that integrates Laravel Artisan and Composer commands for streamlined development.",
 	"author": "NTKhang",
 	"license": "MIT",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"engines": {
 		"vscode": "^1.75.1"
 	},

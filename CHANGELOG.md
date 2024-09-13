@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [0.0.3] - 2024-09-13
 ### Changed
+- Add `retainContextWhenHidden` to webview panel options to keep the context when switching between tabs.
+
+## [0.0.3] - 2024-09-13
+### Changed
 - Remove redundant forward slash in route url on route list when copying or opening in browser.
 - Save host name of project to user settings to use in route list.
 
