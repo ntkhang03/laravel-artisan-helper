@@ -260,13 +260,20 @@ function registerCommandRouteList(cmd, context) {
   );
 
   routeListPanels[projectName] = panel;
-
   executeCommandAndUpdateWebview(panel, cmd, projectName);
 
   panel.webview.onDidReceiveMessage(
     (message) => {
       if (message.command === "refreshRouteList") {
         executeCommandAndUpdateWebview(panel, cmd, projectName);
+      }
+      // openInBrowser
+      else if (message.command === "openInBrowser") {
+        vscode.env.openExternal(vscode.Uri.parse(message.uri));
+      }
+      // showInfo
+      else if (message.command === "showInfo") {
+        vscode.window.showInformationMessage(message.message);
       }
     },
     undefined,
@@ -376,6 +383,9 @@ async function registerCommandBasic(cmd) {
 }
 
 function executeCommandAndUpdateWebview(panel, cmd, projectName) {
+  // set icon for webview
+  panel.iconPath = vscode.Uri.file(path.join(__dirname, "assets", "icon.png"));
+
   panel.webview.html = `
 		<!DOCTYPE html>
 		<html lang="en">
@@ -418,63 +428,24 @@ function executeCommandAndUpdateWebview(panel, cmd, projectName) {
 			</body>
 		</html>
 	`;
+
   exec(
-    `cd ${vscode.workspace.rootPath} && ${cmd.terminalCommand}`,
+    `php ${JSON.stringify(
+      vscode.workspace.rootPath + path.sep + "artisan"
+    )} route:list`,
     (error, stdout) => {
       if (error) {
         vscode.window.showErrorMessage(
           "An error occurred while running the command, please check the output."
         );
         outputChannel.appendLine(`exec error: ${error}`);
+        outputChannel.appendLine(JSON.stringify(error));
         return;
       }
-      const htmlContent = tableTemplateRouteList(
-        projectName,
-        formatRouteList(stdout)
-      );
+      const htmlContent = tableTemplateRouteList(projectName, stdout);
       panel.webview.html = htmlContent;
     }
   );
-}
-
-function formatRouteList(routeList) {
-  const lines = routeList.split(/\r?\n/).filter(Boolean);
-  const routes = lines
-    .map((line) => {
-      const parts = line.trim().split(/\s/).filter(Boolean);
-      if (parts[0] == "Showing") {
-        return null;
-      }
-      const method = parts[0];
-      const uri = parts[1];
-      const path = parts
-        .slice((parts[2] || "").startsWith(".") ? 3 : 2)
-        .join(" ");
-
-      return { method, uri, path };
-    })
-    .filter(
-      (route) => route !== null && Object.keys(route).every((key) => route[key])
-    );
-
-  let rows = "";
-  for (let i = 0; i < routes.length; i++) {
-    rows += `
-      <tr>
-				<td>${i + 1}</td>
-        <td>${routes[i].method
-          .split("|")
-          .map(
-            (m) => `<span class="method method-${m.toLowerCase()}">${m}</span>`
-          )
-          .join(" ")}</td>
-        <td>${routes[i].uri}</td>
-        <td>${routes[i].path}</td>
-      </tr>
-    `;
-  }
-
-  return rows;
 }
 
 class ArtisanCommandProvider {
